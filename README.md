@@ -1,2 +1,2 @@
 # buddylink
-Buddylink is a simple personal Reading list/Bookmark manager!
+Buddylink is a simple personal Reading list/Bookmark manager
