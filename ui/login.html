@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{@html_lang}}">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{{@site['title']}}</title>
+
+	<!-- icon -->
+	<link rel="icon" sizes="any" type="image/png" href="/img/logo.png">
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<!-- Google Font: Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&display=fallback">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="/css/font-awesome/css/all.min.css">
+	<!-- jquery-ui -->
+	<link rel="stylesheet" href="/js/jquery-ui/jquery-ui.min.css">
+	<!-- Custom -->
+	<link rel="stylesheet" href="/css/login.css?2" rel="stylesheet">
+</head>
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="js/jquery/jquery.min.js"></script>
+<!-- jquery-ui -->
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+<!-- Moment -->
+<script src="js/moment/moment.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+<!-- tippy.js -->
+<script src="js/tippyjs/popper.min.js"></script>
+<script src="js/tippyjs/tippy-bundle.umd.min.js"></script>
+
+<body>
+	<main class="form-signin">
+		<div class="text-center mb-4">
+			<img src="/img/logo.png" alt="buddylink logo" width="80"><br>
+			<h3>BuddyLink</h3>
+		</div>
+
+		<div class="card shadow-lg">
+			<div class="card-body">
+				<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+					<div class="form-group mb-2">
+						<label>{{@username}}</label>
+						<input type="text" class="form-control" name="username" id="floatingInput" autocomplete="on" required>
+					</div>
+					<div class="form-group mb-2">
+						<label>{{@password}}</label>
+						<input type="password" class="form-control" name="password" id="floatingPassword" autocomplete="on" required>
+					</div>
+					<input type="hidden" name="csrf_token" id="csrf_token" value="{{@token}}">
+					<div class="float-end">
+						<button class="btn btn-primary" type="submit">{{@singin}}</button>
+					</div>
+				</form>
+			</div>
+
+	</main>
+</body>
+
+</html>

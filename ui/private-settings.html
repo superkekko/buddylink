@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1 class="h2">Settings</h1>
+	<div class="btn-toolbar mb-2 mb-md-0">
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-4">
+		Active session: {{@active_session}}
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-4">
+		<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#end-session" id="edit">End all sessions</button>
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-4">
+		Total visit: {{@visitor}}
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-4">
+		<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancel-data-visit" id="edit">Clear visit history</button>
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-4">
+		<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancel-campaign-hits" id="edit">Clear campaign hits</button>
+	</div>
+</div>
+
+<!-- cancel modal -->
+<div class="modal fade" id="cancel-data" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				Confirm data deletion. Attention, the operation will be irreversible!
+			</div>
+			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="task" id="task" value="delete-data">
+				<div class="d-flex justify-content-between pb-3 px-3">
+					<button type="button" class="btn btn-secondary btn-sm" id="delete-close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- end session -->
+<div class="modal fade" id="end-session" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				Confirm ending sessions. All the opened session (including this) will be terminated!
+			</div>
+			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="task" id="task" value="end-session">
+				<div class="d-flex justify-content-between pb-3 px-3">
+					<button type="button" class="btn btn-secondary btn-sm" id="delete-close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- clear visit list -->
+<div class="modal fade" id="cancel-data-visit" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				Confirm data deletion. Attention, the operation will be irreversible!
+			</div>
+			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="task" id="task" value="delete-data-visit">
+				<div class="d-flex justify-content-between pb-3 px-3">
+					<button type="button" class="btn btn-secondary btn-sm" id="delete-close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- clear campaign hits -->
+<div class="modal fade" id="cancel-campaign-hits" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				Confirm data deletion. Attention, the operation will be irreversible!
+			</div>
+			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="task" id="task" value="delete-campaign-hits">
+				<div class="d-flex justify-content-between pb-3 px-3">
+					<button type="button" class="btn btn-secondary btn-sm" id="delete-close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

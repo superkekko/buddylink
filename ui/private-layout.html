@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="{{@html_lang}}">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{{@site['title']}}</title>
+
+	<!-- icon -->
+	<link rel="icon" sizes="any" type="image/png" href="/img/logo.png">
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<!-- Google Font: Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&display=fallback">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="/css/font-awesome/css/all.min.css">
+	<!-- jquery-ui -->
+	<link rel="stylesheet" href="/js/jquery-ui/jquery-ui.min.css">
+	<!-- list.js -->
+	<link rel="stylesheet" href="/js/list.js/list.css">
+	<!-- Select2 -->
+	<link rel="stylesheet" href="/js/select2/css/select2.min.css">
+	<link rel="stylesheet" href="/js/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+	<!-- Custom -->
+	<link rel="stylesheet" href="/css/custom.css?2" rel="stylesheet">
+</head>
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="/js/jquery/jquery.min.js"></script>
+<!-- jquery-ui -->
+<script src="/js/jquery-ui/jquery-ui.min.js"></script>
+<!-- Bootstrap -->
+<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+<!-- List.js -->
+<script src="/js/list.js/list.min.js"></script>
+<!-- Select2 -->
+<script src="/js/select2/js/select2.min.js"></script>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background-color: #000; color: #fff">
+		<div class="container-fluid mx-5">
+			<a class="navbar-brand" href="{{@site_url}}"><img src="/img/logo.png" alt="buddylink logo" width="30"> {{@site['title']}}</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav me-auto mb-2 mb-md-0">
+					<li class="nav-item">
+						<a class="nav-link" href="/tag">Tags</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/list">List</a>
+					</li>
+				</ul>
+				<div class="dropdown">
+					<a class="custom-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+						{{@active_user['user_id']}}
+					</a>
+
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="/settings">Settings</a></li>
+						<li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+						<li><a class="dropdown-item text-warning" href="/Users">Users</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-12">
+				<include href="{{@content}}" />
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>

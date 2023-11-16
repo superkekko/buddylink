@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BuddyLink settings</title>
+  <link rel="stylesheet" type="text/css" href="settings.css">
+</head>
+
+<body>
+  <h2>BuddyLink settings</h2>
+  <form id="settingsForm">
+	<label for="postUrl">Post URL</label>
+    <input type="text" id="postUrl" name="postUrl">
+	
+	<label for="getUrl">Get URL</label>
+    <input type="text" id="getUrl" name="getUrl">
+	
+    <label for="apiKey">API Key</label>
+    <input type="text" id="apiKey" name="apiKey">
+
+    <button type="button" id="saveButton">Save</button>
+  </form>
+  <div id="statusMessage" style="margin-top: 1em;"></div>
+
+  <script src="settings.js"></script>
+</body>
+
+</html>

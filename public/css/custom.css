@@ -1,0 +1,62 @@
+body {
+	min-height: 75rem;
+	padding-top: 4.5rem;
+	background-color: #E5E5E5;
+	color: #000;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover,
+.custom-link:focus,
+.custom-link:hover {
+	color: #FCA311;
+	text-decoration: none;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.custom-link {
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn-yellow:hover {
+	color: #FCA311;
+}
+
+.list-group li {
+	margin-bottom: 12px;
+}
+
+.list li {
+	list-style: none;
+	padding: 10px;
+	border: 1px solid #fff;
+	margin-top: 12px;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.link-yellow {
+	color: #000;
+	text-decoration: none;
+}
+
+.link-yellow:focus,
+.link-yellow:hover {
+	color: #FCA311;
+	text-decoration: none;
+}
+
+.pagination li a {
+	color: #000;
+	text-decoration: none;
+}
+
+.pagination li a:focus, .pagination li a:hover {
+	color: #FCA311;
+	text-decoration: none;
+}
+
+.bg-yellow{
+	background-color: #FCA311;
+}
