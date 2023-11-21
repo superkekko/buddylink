@@ -28,5 +28,4 @@ Just fill up the settings:
 - jQuery 3.6.0 (https://jquery.com/)
 - jQuery UI 1.13.1 (https://jqueryui.com/)
 - List.js 2.3.1 (https://listjs.com/)
-- ! TippyJs 6.3.7 (https://atomiks.github.io/tippyjs/)
-- Tom select 2.3.1 (https://tom-select.js.org/)
+- Select2 4.0.13 (https://select2.org/)

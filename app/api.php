@@ -1,12 +1,12 @@
 <?php
-class getpost extends controller {
+class api extends controller {
 	function beforeroute($f3) {
 	}
 	
 	function afterroute($f3) {
 	}
 	
-	function listread($f3) {
+	function linkread($f3) {
 		if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 			$authorizationHeader = $_SERVER['HTTP_AUTHORIZATION'];
 			list($tokenType, $token) = explode(' ', $authorizationHeader);
@@ -39,7 +39,7 @@ class getpost extends controller {
 		}
 	}	
 	
-	function listadd($f3) {
+	function linkadd($f3) {
 		if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 			$authorizationHeader = $_SERVER['HTTP_AUTHORIZATION'];
 			list($tokenType, $token) = explode(' ', $authorizationHeader);

@@ -23,8 +23,8 @@ class controller {
 			$db->exec("CREATE TABLE link_list (
 			    id       INTEGER PRIMARY KEY AUTOINCREMENT,
 			    name     TEXT,
-			    link    TEXT,
-			    tags    TEXT,
+			    link     TEXT,
+			    tags     TEXT,
 			    list     TEXT,
 			    status   TEXT,
 			    user_ins TEXT,
@@ -34,20 +34,27 @@ class controller {
 			)");
 
 			$db->exec("CREATE TABLE user (
-			    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-			    user_id  TEXT    UNIQUE,
-			    bearer	 TEXT    NOT NULL,
-			    password TEXT
+			    id      	INTEGER PRIMARY KEY AUTOINCREMENT,
+			    user_id 	TEXT    UNIQUE,
+			    group_id	TEXT,
+			    superadmin	INTEGER NOT NULL,
+			    bearer		TEXT    NOT NULL,
+			    password	TEXT	NOT NULL
 			)");
 
 			$db->exec("CREATE TABLE user_session (
 			    id           INTEGER PRIMARY KEY AUTOINCREMENT,
 			    user_id      TEXT    NOT NULL,
 			    token        TEXT    NOT NULL,
-			    token_expire         NOT NULL
+			    token_expire TEXT    NOT NULL
 			)");
 
-			$db->exec("INSERT INTO user (user_id,bearer,password) VALUES(?,?)", array('superadmin', '56JgXXF77b6HlJKXplIjuK8KOYONTFPu', 'QVVOS09JU0oxSXcrR29QUmx4emVtUT09'));
+			if (!file_exists($main_path.'/data/secret.json')) {
+				$secret = ['key' => $this->generateRandomString(250), 'iv' => $this->generateRandomString(250)];
+				file_put_contents($main_path.'/data/secret.json', json_encode($secret, JSON_INVALID_UTF8_IGNORE));
+			}
+
+			$db->exec("INSERT INTO user (user_id, superadmin, bearer, password) VALUES(?,?,?,?)", array('superadmin', 1, $this->generateRandomString(50), $this->encriptDecript($f3, 'superadmin')));
 		}
 
 		$f3->set('formatDate', function ($date, $empty = '', $time = false, $second = false) {
@@ -57,7 +64,7 @@ class controller {
 		$f3->set('formatNumber', function ($value, $empty = '', $decimal = false, $money = false, $simple = false) {
 			return $this->formatNumber($value, $empty, $decimal, $money, $simple);
 		});
-		
+
 		$f3->set('generateRandom', function ($length, $type) {
 			return $this->generateRandomString($length, $type);
 		});
@@ -78,9 +85,11 @@ class controller {
 		);
 	}
 
-	function encriptDecript($string, $action = 'e') {
-		$secret_key = 'F)ajEx@:=;t;]v?ovg"o89.>p(:j]X(Zs$n8c0}:NHE3ba)d#He#]18Zh{HG#t&';
-		$secret_iv = 'k%0uB+apnH=<1msH(!x`8@.=!7sw^:m;hXGx}uUdJ~*_wVSs1_2*~bNW_|_loD;';
+	function encriptDecript($f3, $string, $action = 'e') {
+		$main_path = $f3->get('main_path');
+		$secret = json_decode(file_get_contents($main_path.'/data/secret.json'), true);
+		$secret_key = $secret['key'];
+		$secret_iv = $secret['iv'];
 		$output = false;
 
 		$encrypt_method = "AES-256-CBC";
@@ -96,13 +105,21 @@ class controller {
 		return $output;
 	}
 
-	function generateRandomString($length, $type) {
+	function generateRandomString($length, $type = 'mix') {
+		$lowercase = 'abcdefghijklmnopqrstuvwxyz';
+		$uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$number = '0123456789';
+		$special = '!?;:@,.+-=/*()';
 		if ($type == 'mix') {
-			$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$characters = $lowercase.$uppercase.$number.$special;
 		} elseif ($type == 'letter') {
-			$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$characters = $lowercase.$uppercase;
+		} elseif ($type == 'number') {
+			$characters = $number;
+		} elseif ($type = 'special') {
+			$characters = $special;
 		} else {
-			$characters = '0123456789';
+			return null;
 		}
 		$charactersLength = strlen($characters);
 		$randomString = '';
