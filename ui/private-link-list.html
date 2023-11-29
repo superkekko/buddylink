@@ -1,11 +1,11 @@
 <div id="list">
 	<div class="container">
 		<div class="row d-flex justify-content-between">
-			<div class="col-6">
+			<div class="col-md-6">
 				<button class="btn btn-tool btn-yellow" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="fa-regular fa-square-plus"></i> Add link</button>
 				<a href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20description=document.getSelection()||'';var%20title%20=%20document.title%20||%20url;window.open('{{@site_url}}/link-add?url='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title),'_blank','menubar=no,height=400,width=800,toolbar=no,scrollbars=no,status=no,dialog=1');})();" class="btn btn-tool btn-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="Save this link in bookmark to save other links"><i class="fa-solid fa-bookmark"></i> Smart Save</a>
 			</div>
-			<div class="col-6">
+			<div class="col-md-6">
 				<div class="input-group">
 					<input type="text" class="form-control search" name="search" placeholder="Search..." aria-label="Search..." aria-describedby="search">
 					<button class="btn btn-outline-secondary" type="button" id="search"><i class="fas fa-search"></i></button>
