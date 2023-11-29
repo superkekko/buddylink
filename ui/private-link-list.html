@@ -97,16 +97,17 @@
 		document.getElementById('edit-id').setAttribute("value", $(this).data('id'));
 		document.getElementById('edit-name').setAttribute("value", $(this).data('name'));
 		document.getElementById('edit-link').setAttribute("value", $(this).data('link'));
-		document.getElementById('edit-list').setAttribute("value", $(this).data('list'));
-		document.getElementById('edit-tags').setAttribute("value", $(this).data('tags'));
+		$('#edit-list').val($(this).data('list')).trigger('change');
+		tags = $(this).data('tags');
+		$('#edit-tags').val(tags.split(",")).trigger('change');
 	});
 
 	$(document).on("click", "#edit-close", function() {
 		document.getElementById('edit-id').setAttribute("value", 0);
 		document.getElementById('edit-name').setAttribute("value", "");
 		document.getElementById('edit-link').setAttribute("value", "");
-		document.getElementById('edit-list').setAttribute("value", "");
-		document.getElementById('edit-tags').setAttribute("value", "");
+		$('#edit-list').val(null).trigger('change');
+		$('#edit-tags').val(null).trigger('change');
 	});
 </script>
 
