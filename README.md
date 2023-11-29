@@ -17,7 +17,7 @@ Just fill up the settings:
 - Post URL -> [your-server-url]/add
 - Get URL -> [your-server-url]/read
 - API Key -> get it in the settings page
-- 
+
 ### Firefox
 https://addons.mozilla.org/it/firefox/addon/buddylink/
 
