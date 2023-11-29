@@ -6,7 +6,7 @@ class authentication extends controller {
 		$requestpage = $f3->get('COOKIE.requestpage');
 		$f3->clear('COOKIE');
 		$f3->set('COOKIE.requestpage', $requestpage, 1296000);
-
+		
 		//create new session with 15gg live cookie, rootpath, server, secure, httponly and samesite strict
 		session_set_cookie_params(1296000, '/', $_SERVER['HTTP_HOST'], false, true);
 		ini_set('session.cookie_samesite', 'Strict');
@@ -23,7 +23,7 @@ class authentication extends controller {
 		$page_token = filter_var($f3->get('POST.csrf_token'), FILTER_SANITIZE_STRING);
 
 		$session_csrf = $f3->get('SESSION.token');
-
+		
 		$userok = false;
 
 		$user_check = $f3->get('DB')->exec('SELECT * FROM user WHERE user_id=?', $username);
@@ -34,7 +34,12 @@ class authentication extends controller {
 			$f3->get('DB')->exec('INSERT INTO user_session(user_id, token, token_expire) VALUES(?,?,?)', array($username, $session_csrf, $exipration_date));
 			$f3->set('SESSION.username', $username);
 
-			$f3->reroute("/");
+			if ($f3->exists('COOKIE.requestpage',$requestpage)) {
+				$f3->clear('COOKIE.requestpage');
+    			$f3->reroute($requestpage);
+			}else{
+				$f3->reroute('/');
+			}
 		} else {
 			$f3->set('login_error', true);
 			$this->loginpage($f3);
@@ -51,6 +56,8 @@ class authentication extends controller {
 
 			$f3->get('DB')->exec('UPDATE user_session SET token_expire = ? WHERE id=?', array(date('Y-m-d H:i:s'), $user_data['id']));
 			$f3->clear('SESSION');
+			$f3->clear('COOKIE');
+			
 			$f3->reroute('/login');
 		} else {
 			$f3->reroute('/login');
@@ -60,6 +67,7 @@ class authentication extends controller {
 	function checklogged($f3) {
 		$session_username = $f3->get('SESSION.username');
 		$session_token = $f3->get('SESSION.token');
+		$f3->set('COOKIE.requestpage', $f3->get('REALM'), 1296000);
 
 		$user_present = $f3->get('DB')->exec('SELECT * FROM user WHERE user_id=?', $session_username);
 
@@ -76,5 +84,4 @@ class authentication extends controller {
 			return false;
 		}
 	}
-
 }

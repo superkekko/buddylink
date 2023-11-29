@@ -1,6 +1,7 @@
 <?php
 class privatepages extends authentication {
 	function beforeroute($f3) {
+		
 		if (!$this->checklogged($f3)) {
 			$f3->reroute("/login");
 		}

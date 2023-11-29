@@ -100,3 +100,118 @@ Tue, 21 Nov 2023 17:51:05 +0100 [62.77.47.66] 500 - implode(): Invalid arguments
 Tue, 21 Nov 2023 17:51:05 +0100 [62.77.47.66] 404 - HTTP 404 (GET /img/logo.svg)
 Tue, 21 Nov 2023 17:53:56 +0100 [62.77.47.66] 500 - implode(): Invalid arguments passed
 Tue, 21 Nov 2023 17:53:56 +0100 [62.77.47.66] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 11:17:43 +0100 [151.36.238.249] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:53:47 +0100 [151.18.227.164] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:54:05 +0100 [151.18.227.164] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:54:17 +0100 [151.18.227.164] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:57:35 +0100 [217.27.82.4] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:57:42 +0100 [217.27.82.4] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 11:58:00 +0100 [217.27.82.4] 404 - HTTP 404 (GET /app.webmanifest)
+Thu, 23 Nov 2023 12:04:54 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Thu, 23 Nov 2023 12:04:54 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Thu, 23 Nov 2023 14:07:04 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 14:07:04 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 14:07:13 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 14:08:05 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 14:08:06 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 14:11:27 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 14:11:28 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 14:16:17 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 14:16:17 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 16:50:29 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 16:50:30 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 16:50:38 +0100 [217.27.82.4] 500 - hash_equals(): Expected known_string to be a string, null given
+Thu, 23 Nov 2023 16:50:39 +0100 [217.27.82.4] 404 - HTTP 404 (GET /img/logo.svg)
+Thu, 23 Nov 2023 22:47:19 +0100 [154.194.17.170] 404 - HTTP 404 (GET /logo-512.png)
+Fri, 24 Nov 2023 23:58:30 +0100 [154.194.17.14] 404 - HTTP 404 (GET /logo-512.png)
+Sat, 25 Nov 2023 23:57:23 +0100 [206.228.112.46] 404 - HTTP 404 (GET /logo-512.png)
+Mon, 27 Nov 2023 00:44:31 +0100 [207.228.8.59] 404 - HTTP 404 (GET /logo-512.png)
+Mon, 27 Nov 2023 12:21:28 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 12:21:29 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 12:21:36 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 12:21:37 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 12:37:27 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Mon, 27 Nov 2023 12:37:27 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Mon, 27 Nov 2023 12:41:03 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 12:41:05 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 13:01:08 +0100 [192.168.1.1] 500 - session_set_save_handler(): Cannot change save handler when session is active
+Mon, 27 Nov 2023 13:01:10 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 13:01:37 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 13:01:38 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 16:00:44 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 16:00:46 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 16:01:34 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 16:01:35 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 16:02:00 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 16:03:19 +0100 [192.168.1.1] 500 - Too few arguments to function controller::encriptDecript(), 1 passed in /volume2/web/atheos/workspace/buddylink/app/authentication.php on line 113 and at least 2 expected [/volume2/web/atheos/workspace/buddylink/app/controller.php:88]
+Mon, 27 Nov 2023 16:03:19 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 16:08:27 +0100 [192.168.1.1] 500 - implode(): Invalid arguments passed
+Mon, 27 Nov 2023 16:13:31 +0100 [192.168.1.1] 500 - implode(): Invalid arguments passed
+Mon, 27 Nov 2023 17:19:55 +0100 [192.168.1.1] 500 - Call to undefined function checkloginapi() [/volume2/web/atheos/workspace/buddylink/app/privatepages.php:8]
+Mon, 27 Nov 2023 17:19:56 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 17:25:05 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Mon, 27 Nov 2023 17:25:06 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Mon, 27 Nov 2023 17:29:07 +0100 [142.250.32.34] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Mon, 27 Nov 2023 17:29:07 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Mon, 27 Nov 2023 17:50:38 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Mon, 27 Nov 2023 17:50:40 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 10:06:55 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Tue, 28 Nov 2023 10:06:55 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Tue, 28 Nov 2023 12:00:52 +0100 [192.168.1.1] 404 - HTTP 404 (GET /buddylink.homedevelop.duckdns.org)
+Tue, 28 Nov 2023 12:00:53 +0100 [192.168.1.1] 404 - HTTP 404 (GET /buddylink.homedevelop.duckdns.org)
+Tue, 28 Nov 2023 12:00:53 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Tue, 28 Nov 2023 15:52:38 +0100 [192.168.1.1] 500 - hash_equals(): Expected known_string to be a string, null given
+Tue, 28 Nov 2023 15:52:43 +0100 [192.168.1.1] 404 - HTTP 404 (GET /img/logo.svg)
+Tue, 28 Nov 2023 16:21:42 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:21:43 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:28:52 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:28:52 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:34:30 +0100 [142.250.32.34] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:34:30 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:43:00 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:43:03 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 16:53:16 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 17:01:55 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 17:01:55 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 17:47:49 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 21:14:32 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Tue, 28 Nov 2023 21:14:32 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 12:21:43 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 12:21:43 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 12:30:35 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 12:30:35 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:27:09 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:27:09 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:29:30 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:29:30 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:34:52 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:34:52 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:35:59 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:35:59 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:40:22 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:51:11 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:51:11 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:54:41 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 13:54:41 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:01:59 +0100 [66.102.9.172] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:01:59 +0100 [66.102.9.171] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:07:58 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:06 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:11 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:18 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:36 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:43 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:50 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:56 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:08:58 +0100 [151.46.29.113] 404 - HTTP 404 (GET /manifest.json)
+Wed, 29 Nov 2023 14:10:29 +0100 [62.77.47.78] 500 - hash_equals(): Expected known_string to be a string, null given
+Wed, 29 Nov 2023 14:10:29 +0100 [62.77.47.78] 404 - HTTP 404 (GET /img/logo.svg)
+Wed, 29 Nov 2023 14:11:49 +0100 [142.250.32.33] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:11:49 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:29:02 +0100 [142.250.32.32] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:29:02 +0100 [66.102.9.170] 404 - HTTP 404 (GET /.well-known/assetlinks.json)
+Wed, 29 Nov 2023 14:29:44 +0100 [151.46.29.113] 404 - HTTP 404 (GET /app.webmanifiest)
+Wed, 29 Nov 2023 14:29:45 +0100 [151.46.29.113] 404 - HTTP 404 (GET /img/logo.svg)
+Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 500 - syntax error, unexpected '{' [/volume2/web/atheos/workspace/buddylink/tmp/1ifbqb43cap7y.2m7d0ofrwjswc.php:73]
+Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 500 - syntax error, unexpected '{' [/volume2/web/atheos/workspace/buddylink/tmp/1ifbqb43cap7y.2m7d0ofrwjswc.php:73]
+Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 404 - HTTP 404 (GET /img/logo.svg)

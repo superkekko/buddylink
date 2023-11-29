@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>{{@site['title']}}</title>
+	<title>{{@title}}</title>
 
 	<!-- icon -->
 	<link rel="icon" sizes="any" type="image/png" href="/img/logo.png">
@@ -15,49 +15,19 @@
 	<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="/css/font-awesome/css/all.min.css">
-	<!-- jquery-ui -->
-	<link rel="stylesheet" href="/js/jquery-ui/jquery-ui.min.css">
-	<!-- list.js -->
-	<link rel="stylesheet" href="/js/list.js/list.css">
-	<!-- Select2 -->
-	<link rel="stylesheet" href="/js/select2/css/select2.min.css">
-	<link rel="stylesheet" href="/js/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 	<!-- Custom -->
-	<link rel="stylesheet" href="/css/custom.css?2" rel="stylesheet">
+	<link rel="stylesheet" href="/css/login.css?1" rel="stylesheet">
 </head>
 
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="/js/jquery/jquery.min.js"></script>
-<!-- jquery-ui -->
-<script src="/js/jquery-ui/jquery-ui.min.js"></script>
-<!-- Bootstrap -->
-<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
-<!-- List.js -->
-<script src="/js/list.js/list.min.js"></script>
-<!-- Select2 -->
-<script src="/js/select2/js/select2.min.js"></script>
-
 <body>
-	<main class="container">
-		<div class="row">
-			<div class="col-12">
-				Link saved
-			</div>
+	<div class="row d-flex justify-content-center align-items-center" style="width: 100vw">
+		<div class="col-3 text-center">
+			<h1 class="display-1 fw-bold">Link saved</h1>
+			<p class="fs-3"> <span class="text-danger">You can close this windows if it doesn't close automatically.</p>
 		</div>
-	</main>
-
+	</div>
 </body>
-
-</html>
 
 <script>
 	window.close();
-</script>
-
-<script>
-	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-		return new bootstrap.Tooltip(tooltipTriggerEl)
-	})
 </script>

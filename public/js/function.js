@@ -68,18 +68,23 @@ function postdata(page,param){
 	if(debug){console.log(page, call);}
 }
 
-//create/delete/get cookie (option: {expires:1, domain: 'domain.com', Secure: true, 'max-age': 3600, SameSite: 'strict'})
+//create/delete/get cookie (option: {expires:1, domain: 'domain.com', Secure: true, 'max-age': 1, SameSite: 'strict'}) !! the time is in days !!
 function setCookie(name, value, options = {}) {
   options = {
     path: '/',
     // aggiungi altri percorsi di default se necessario
     ...options
   };
-
+  
   if (options.expires != null) {
   	let date = new Date();
     date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
     options.expires = date.toUTCString();
+  }
+  
+  var maxAge = options["max-age"];
+  if (maxAge != null) {
+    options["max-age"] = maxAge * 24 * 60 * 60;
   }
 
   let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
