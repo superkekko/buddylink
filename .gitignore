@@ -1,4 +1,5 @@
 /tmp/log/*.error
 /tmp/*.php
+/tmp/*.log
 /data/*.db
 /data/*.json

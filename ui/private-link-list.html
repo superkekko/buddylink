@@ -14,12 +14,12 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<div class="mt-3">
+	<div class="container" id="link-list-wrapper">
+		<div class="mt-3" id="link-list">
 			<ul class="list list-inline">
 				<repeat group="{{@link_list}}" value="{{@item}}">
 					<li data-id="{{ @item['id'] }}" class="shadow">
-						<div class="row ml-2">
+						<div class="row ml-2 text-truncate">
 							<h6 class="mb-0"><img src="https://www.google.com/s2/favicons?domain={{@item['link']}}&sz=32" alt="{{@item['name']}} favicon"> <a href="{{@item['link']}}" target="_blank" class="link-yellow"><span class="name">{{@item['name']}}</span> (<span class="link">{{@item['link']}}</span>)</a></h6>
 							<div class="row mt-1 d-flex justify-content-between">
 								<div class="col">
@@ -167,4 +167,17 @@
 	table.sort('time_ins', {
 		order: 'desc'
 	});
+</script>
+
+<script>
+const timer = ms => new Promise(res => setTimeout(res, ms))
+
+async function refresh() { 
+  while(true) {
+  	$('#link-list-wrapper').load(document.URL +  ' #link-list');
+    await timer(60000);
+  }
+}
+
+refresh();
 </script>

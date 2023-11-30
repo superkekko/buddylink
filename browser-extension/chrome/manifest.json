@@ -3,7 +3,7 @@
   "name": "BuddyLink",
   "description": "Save your bookmarks in the cloud",
   "version": "1.0",
-  "permissions": ["storage", "activeTab", "webRequest"],
+  "permissions": ["storage", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "icons": {
     "32": "icon/icon-32.png",

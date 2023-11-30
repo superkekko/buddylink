@@ -215,3 +215,4 @@ Wed, 29 Nov 2023 14:29:45 +0100 [151.46.29.113] 404 - HTTP 404 (GET /img/logo.sv
 Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 500 - syntax error, unexpected '{' [/volume2/web/atheos/workspace/buddylink/tmp/1ifbqb43cap7y.2m7d0ofrwjswc.php:73]
 Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 500 - syntax error, unexpected '{' [/volume2/web/atheos/workspace/buddylink/tmp/1ifbqb43cap7y.2m7d0ofrwjswc.php:73]
 Wed, 29 Nov 2023 14:32:35 +0100 [62.77.47.78] 404 - HTTP 404 (GET /img/logo.svg)
+Wed, 29 Nov 2023 19:47:56 +0100 [94.228.169.182] 404 - HTTP 404 (GET /.env)
