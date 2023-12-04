@@ -36,7 +36,13 @@ class authentication extends controller {
 
 			if ($f3->exists('COOKIE.requestpage',$requestpage)) {
 				$f3->clear('COOKIE.requestpage');
-    			$f3->reroute($requestpage);
+				
+				$url_parsed = parse_url($requestpage);
+				if($url_parsed['path'] == '/login'){
+					$f3->reroute('/');	
+				}else{
+					$f3->reroute($requestpage);
+				}
 			}else{
 				$f3->reroute('/');
 			}
