@@ -38,7 +38,7 @@ class authentication extends controller {
 				$f3->clear('COOKIE.requestpage');
 				
 				$url_parsed = parse_url($requestpage);
-				if($url_parsed['path'] == '/login'){
+				if($url_parsed['path'] == '/login' || $url_parsed['path'] == '/logout'){
 					$f3->reroute('/');	
 				}else{
 					$f3->reroute($requestpage);
