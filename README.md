@@ -22,7 +22,7 @@ Just fill up the settings:
 https://addons.mozilla.org/it/firefox/addon/buddylink/
 
 ### Chrome
-to be updated
+https://chromewebstore.google.com/detail/buddylink/heipdpcackofcbgicienckpjeopodaem
 
 ## To do
 - [ ] manage sharing tab between users of same group
