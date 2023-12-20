@@ -47,14 +47,13 @@ body {
 	text-decoration: none;
 }
 
-.pagination li a {
-	color: #000;
-	text-decoration: none;
+.page-item.active .page-link {
+	background-color: #212529;
+	border-color: #212529;
 }
 
-.pagination li a:focus, .pagination li a:hover {
-	color: #FCA311;
-	text-decoration: none;
+.page-item .page-link {
+	color: #212529;
 }
 
 .bg-yellow{

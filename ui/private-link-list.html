@@ -41,7 +41,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="pagination d-flex justify-content-center"></div>
+	<ul class="pagination d-flex justify-content-center"></ul>
 </div>
 
 <!-- insert-edit -->
@@ -158,10 +158,11 @@
 <script>
 	var table = new List('list', {
 		valueNames: ['name', 'link', 'list', 'tags'],
-		page: 20,
+		page: 10,
 		pagination: [{
 			innerWindow: 3,
-			outerWindow: 2
+			outerWindow: 2,
+			item: "<li class='page-item'><a class='page page-link' href='#'></a></li>"
 		}]
 	});
 	table.sort('time_ins', {
