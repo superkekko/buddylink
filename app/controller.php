@@ -13,12 +13,18 @@ class controller {
 
 		$f3->set('siteurl', $this->siteURL());
 
-		$f3->set('DB', new DB\SQL('sqlite:'.$main_path.'/data/database.db'));
-
 		//check if DB is empty and create structure
-		$results = $f3->get('DB')->exec("SELECT name FROM sqlite_schema WHERE type=?", 'table');
+		//check previus DB presence
+		if (!file_exists($main_path.'/data/database.db')) {
+            $install = true;
+        } else {
+            $install = false;
+        }
+        
+        $f3->set('DB', new DB\SQL('sqlite:'.$main_path.'/data/database.db'));
 
-		if (empty($results)) {
+		//create DB structure if file not exist
+		if ($install) {
 			$db = $f3->get('DB');
 			$db->exec("CREATE TABLE link_list (
 			    id       INTEGER PRIMARY KEY AUTOINCREMENT,
