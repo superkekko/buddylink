@@ -3,7 +3,7 @@ class privatepages extends authentication {
 	function beforeroute($f3) {
 		
 		if (!$this->checklogged($f3)) {
-			$f3->reroute("/login");
+			$f3->reroute("/logout");
 		}
 
 		$current_user = $f3->get('active_user');
