@@ -51,6 +51,10 @@ class privatepages extends authentication {
 		foreach ($results as $result) {
 			$alllist[] = $result['list'];
 		}
+		
+		if(($key = array_search("", $alllist)) !== false) {
+		    unset($alllist[$key]);
+		}
 
 		$f3->set('list_item', $alllist);
 
@@ -75,6 +79,10 @@ class privatepages extends authentication {
 
 		foreach ($results as $result) {
 			$alltags = array_merge($alltags, explode(',', $result['tags']));
+		}
+		
+		if(($key = array_search("", $alltags)) !== false) {
+		    unset($alltags[$key]);
 		}
 
 		$f3->set('list_item', array_unique($alltags));
