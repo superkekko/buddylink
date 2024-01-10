@@ -114,6 +114,32 @@
 	})
 </script>
 
+<!-- Modal for pwa installation for ios-->
+<div class="modal fade" id="ios-pwa-install" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				<i class="fa-solid fa-mobile-screen-button"></i> Install this webapp on your device: click on the share button and add to homescreen.
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<script>
+	if (mobileType() == 'ios' && !pwaInstalled() && typeof getCookie('pwa-popup-ios') === 'undefined') {
+		$('#ios-pwa-install').modal('show');
+		setCookie('pwa-popup-ios', true, {
+			expires: 1,
+			domain: '{{@HOST}}',
+			Secure: true,
+			'max-age': 86400,
+			SameSite: 'lax'
+		})
+	}
+</script>
+
 <script>
 	registerServiceWorker();
 </script>
