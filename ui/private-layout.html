@@ -57,6 +57,8 @@
 <script src="/js/select2/js/select2.min.js"></script>
 <!-- Custom -->
 <script src="/js/function.js"></script>
+<!-- pwa notification -->
+<script src="/js/pwa-function.js"></script>
 
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background-color: #000; color: #fff">
@@ -110,4 +112,8 @@
 	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
 		return new bootstrap.Tooltip(tooltipTriggerEl)
 	})
+</script>
+
+<script>
+	registerServiceWorker();
 </script>
