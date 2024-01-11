@@ -157,13 +157,7 @@
 
 <script>
 	var table = new List('list', {
-		valueNames: ['name', 'link', 'list', 'tags'],
-		page: 10,
-		pagination: [{
-			innerWindow: 3,
-			outerWindow: 2,
-			item: "<li class='page-item'><a class='page page-link' href='#'></a></li>"
-		}]
+		valueNames: ['name', 'link', 'list', 'tags']
 	});
 	table.sort('time_ins', {
 		order: 'desc'

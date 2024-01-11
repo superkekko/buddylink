@@ -40,7 +40,7 @@ class privatepages extends authentication {
 		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ?", $current_user['user_id']);
 		$f3->set('link_list', $results);
 
-		$f3->set('content', 'private-link-list.html');
+		$f3->set('content', 'private-item.html');
 	}
 
 	function lists($f3) {
@@ -58,7 +58,7 @@ class privatepages extends authentication {
 
 		$f3->set('list_item', $alllist);
 
-		$f3->set('content', 'private-list-list.html');
+		$f3->set('content', 'private-list.html');
 	}
 
 	function listview($f3) {
@@ -68,7 +68,7 @@ class privatepages extends authentication {
 		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ? and list = ?", array($current_user['user_id'], $id));
 		$f3->set('link_list', $results);
 
-		$f3->set('content', 'private-link-list.html');
+		$f3->set('content', 'private-item.html');
 	}
 
 	function tags($f3) {
@@ -87,7 +87,7 @@ class privatepages extends authentication {
 
 		$f3->set('list_item', array_unique($alltags));
 
-		$f3->set('content', 'private-tag-list.html');
+		$f3->set('content', 'private-tag.html');
 	}
 
 	function tagview($f3) {
@@ -97,7 +97,7 @@ class privatepages extends authentication {
 		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ? and (',' || tags || ',') LIKE ?", array($current_user['user_id'], '%,'.$id.',%'));
 		$f3->set('link_list', $results);
 
-		$f3->set('content', 'private-link-list.html');
+		$f3->set('content', 'private-item.html');
 	}
 
 	function linkedit($f3) {
