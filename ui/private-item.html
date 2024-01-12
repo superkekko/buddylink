@@ -1,11 +1,46 @@
 <div id="list">
 	<div class="container">
-		<div class="row d-flex justify-content-between">
-			<div class="col-md-6">
-				<button class="btn btn-tool btn-yellow" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="fa-regular fa-square-plus"></i> Add link</button>
-				<a href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20description=document.getSelection()||'';var%20title%20=%20document.title%20||%20url;window.open('{{@site_url}}/link-add?url='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title),'_blank','menubar=no,height=400,width=800,toolbar=no,scrollbars=no,status=no,dialog=1');})();" class="btn btn-tool btn-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="Save this link in bookmark to save other links"><i class="fa-solid fa-bookmark"></i> Smart Save</a>
-			</div>
-			<div class="col-md-6">
+		<div class="row">
+			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+				<div class="row mb-2">
+					<div class="col-12">
+						<input type="text" name="name" id="edit-name" class="form-control" placeholder="Name" value="">
+					</div>
+				</div>
+				<div class="row mb-2">
+					<div class="col-12">
+						<input type="text" name="link" id="edit-link" class="form-control" placeholder="Link" value="" required>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<div class="col-md-6">
+						<select name="tags[]" multiple id="edit-tags" placeholder="Tags" class="form-control" style="width: 100%;">
+							<option value=""></option>
+							<repeat group="{{@tags}}" value="{{@item}}">
+								<option>{{ @item }}</option>
+							</repeat>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<select name="list" placeholder="List" id="edit-list" class="form-control">
+							<option value=""></option>
+							<repeat group="{{@list}}" value="{{@item}}">
+								<option>{{@item}}</option>
+							</repeat>
+						</select>
+					</div>
+				</div>
+				<input type="hidden" name="task" id="task" value="edit-link">
+				<input type="hidden" name="id" id="edit-id" value="0">
+				<div class="d-flex justify-content-end pb-3">
+					<button type="submit" class="btn btn-success btn-sm">Save</button>
+					<button type="button" class="btn btn-sm btn-tool" id="edit-clear"><i class="fa-solid fa-broom"></i> Clear</button>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-end">
+				<a href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20description=document.getSelection()||'';var%20title%20=%20document.title%20||%20url;window.open('{{@site_url}}/link-add?url='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title),'_blank','menubar=no,height=400,width=800,toolbar=no,scrollbars=no,status=no,dialog=1');})();" class="btn btn-tool btn-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="Save this link in bookmark to save other links"><i class="fa-solid fa-bookmark"></i></a>
 				<input type="text" name="search" class="form-control float-right search" placeholder="Search">
 			</div>
 		</div>
@@ -29,7 +64,11 @@
 								</div>
 								<div class="col  d-flex justify-content-end">
 									<button type="button" class="btn btn-sm btn-tool" data-bs-toggle="modal" data-bs-target="#edit-modal" id="edit-data" data-id="{{@item['id']}}" data-name="{{@item['name']}}" data-link="{{@item['link']}}" data-tags="{{@item['tags']}}" data-list="{{@item['list']}}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>&emsp;
-									<button type="button" class="btn btn-sm btn-tool text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete-data" data-id="{{@item['id']}}" data-name="{{@item['name']}}"><i class="fa-solid fa-trash-can"></i> Delete</button>
+									<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
+									<input type="hidden" name="task" value="delete-link">
+									<input type="hidden" name="id" value="{{@item['id']}}">
+									<button type="submit" class="btn btn-sm btn-tool text-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
+								</form>
 								</div>
 							</div>
 						</div>
@@ -39,54 +78,6 @@
 		</div>
 	</div>
 	<ul class="pagination d-flex justify-content-center"></ul>
-</div>
-
-<!-- insert-edit -->
-<div class="modal fade" id="edit-modal" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
-				<div class="modal-body">
-					<div class="row mb-2">
-						<div class="col-12">
-							<input type="text" name="name" id="edit-name" class="form-control" placeholder="Name" value="">
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-12">
-							<input type="text" name="link" id="edit-link" class="form-control" placeholder="Link" value="" required>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6">
-							<select name="tags[]" multiple id="edit-tags" placeholder="Tags" class="form-control" style="width: 100%;">
-								<option value=""></option>
-								<repeat group="{{@tags}}" value="{{@item}}">
-									<option>{{ @item }}</option>
-								</repeat>
-							</select>
-						</div>
-						<div class="col-md-6">
-							<select name="list" placeholder="List" id="edit-list" class="form-control">
-								<option value=""></option>
-								<repeat group="{{@list}}" value="{{@item}}">
-									<option>{{@item}}</option>
-								</repeat>
-							</select>
-						</div>
-					</div>
-				</div>
-				<input type="hidden" name="task" id="task" value="edit-link">
-				<input type="hidden" name="id" id="edit-id" value="0">
-				<div class="d-flex justify-content-between pb-3 px-3">
-					<button type="button" class="btn btn-secondary btn-sm" id="edit-close" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success btn-sm">Save</button>
-				</div>
-			</form>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
 </div>
 
 <script>
@@ -99,7 +90,7 @@
 		$('#edit-tags').val(tags.split(",")).trigger('change');
 	});
 
-	$(document).on("click", "#edit-close", function() {
+	$(document).on("click", "#edit-clear", function() {
 		document.getElementById('edit-id').setAttribute("value", 0);
 		document.getElementById('edit-name').setAttribute("value", "");
 		document.getElementById('edit-link').setAttribute("value", "");
@@ -110,7 +101,6 @@
 
 <script>
 	$('#edit-tags').select2({
-		dropdownParent: $("#edit-modal"),
 		theme: 'bootstrap4',
 		placeholder: "Tags",
 		tags: true,
@@ -118,37 +108,10 @@
 	});
 
 	$('#edit-list').select2({
-		dropdownParent: $("#edit-modal"),
 		theme: 'bootstrap4',
 		placeholder: "List",
 		tags: true,
 		allowClear: true
-	});
-</script>
-
-<!-- delete -->
-<div class="modal fade" id="delete-modal" style="display: none;" aria-hidden="true" data-keyboard="false" data-bs-backdrop="static">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body" id="delete-text"></div>
-			<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
-				<input type="hidden" name="task" id="task" value="delete-link">
-				<input type="hidden" name="id" id="delete-id" value="0">
-				<div class="d-flex justify-content-between pb-3 px-3">
-					<button type="button" class="btn btn-secondary btn-sm" id="delete-close" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-danger btn-sm">Confirm</button>
-				</div>
-			</form>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-
-<script>
-	$(document).on("click", "#delete-data", function() {
-		document.getElementById('delete-id').setAttribute("value", $(this).data('id'));
-		document.getElementById('delete-text').innerHTML = "Confirm data deletion of <b>" + $(this).data('name') + "</b> link";
 	});
 </script>
 
@@ -162,14 +125,16 @@
 </script>
 
 <script>
-const timer = ms => new Promise(res => setTimeout(res, ms))
+	const timer = ms => new Promise(res => setTimeout(res, ms))
 
-sync function refresh() { 
-  while(true) {
-  	$('#link-list-wrapper').load(document.URL +  ' #link-list');
-    await timer(60000);
-  }
-}
+	sync
 
-refresh();
+	function refresh() {
+		while (true) {
+			$('#link-list-wrapper').load(document.URL + ' #link-list');
+			await timer(60000);
+		}
+	}
+
+	refresh();
 </script>
