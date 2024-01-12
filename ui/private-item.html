@@ -55,10 +55,10 @@
 							<h6 class="mb-0"><img src="https://www.google.com/s2/favicons?domain={{@item['link']}}&sz=32" alt="{{@item['name']}} favicon"> <a href="{{@item['link']}}" target="_blank" class="link-yellow"><span class="name">{{@item['name']}}</span> (<span class="link">{{@item['link']}}</span>)</a></h6>
 							<div class="row mt-1 d-flex justify-content-between">
 								<div class="col">
-									<a href="/list/{{@item['list']}}" class="lista link-yellow">{{@item['list']}}</a>&emsp;
+									<a href="/list/{{@item['list']}}" class="list link-yellow">{{@item['list']}}</a>&emsp;
 									<span class="tags">
 										<repeat group="{{explode(',', @item['tags'])}}" value="{{@subitem}}">
-											<a href="/tag/{{@subitem}}"><span class="badge rounded-pill bg-yellow">{{@subitem}}</span></a>
+											<a href="/tag/{{@subitem}}"><span class="tags badge rounded-pill bg-yellow">{{@subitem}}</span></a>
 										</repeat>
 									</span>
 								</div>
