@@ -8,7 +8,7 @@ class privatepages extends authentication {
 
 		$current_user = $f3->get('active_user');
 
-		$lists_raw = $f3->get('DB')->exec("SELECT distinct list FROM link_list where user_upd = ?", $current_user['user_id']);
+		$lists_raw = $f3->get('DB')->exec("SELECT distinct list FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($current_user['user_id'], $current_user['group_id'], 1));
 		$lists = [];
 		foreach ($lists_raw as $item) {
 			$lists[] = $item['list'];
@@ -17,7 +17,7 @@ class privatepages extends authentication {
 		asort($lists);
 		$f3->set('list', $lists);
 
-		$tags_raw = $f3->get('DB')->exec("SELECT distinct tags FROM link_list where user_upd = ?", $current_user['user_id']);
+		$tags_raw = $f3->get('DB')->exec("SELECT distinct tags FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($current_user['user_id'], $current_user['group_id'], 1));
 		$tags = [];
 		foreach ($tags_raw as $item) {
 			foreach (explode(',', $item['tags']) as $subitem) {
@@ -37,7 +37,7 @@ class privatepages extends authentication {
 	function allview($f3) {
 		$current_user = $f3->get('active_user');
 
-		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ?", $current_user['user_id']);
+		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($current_user['user_id'], $current_user['group_id'], 1));
 		$f3->set('link_list', $results);
 
 		$f3->set('content', 'private-item.html');
@@ -46,7 +46,7 @@ class privatepages extends authentication {
 	function lists($f3) {
 		$current_user = $f3->get('active_user');
 
-		$results = $f3->get('DB')->exec("SELECT distinct list FROM link_list where user_upd = ?", $current_user['user_id']);
+		$results = $f3->get('DB')->exec("SELECT distinct list FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($current_user['user_id'], $current_user['group_id'], 1));
 		$alllist = [];
 		foreach ($results as $result) {
 			$alllist[] = $result['list'];
@@ -74,7 +74,7 @@ class privatepages extends authentication {
 	function tags($f3) {
 		$current_user = $f3->get('active_user');
 
-		$results = $f3->get('DB')->exec("SELECT distinct tags FROM link_list where user_upd = ?", $current_user['user_id']);
+		$results = $f3->get('DB')->exec("SELECT distinct tags FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($current_user['user_id'], $current_user['group_id'], 1));
 		$alltags = [];
 
 		foreach ($results as $result) {
@@ -114,11 +114,17 @@ class privatepages extends authentication {
 			} else {
 				$tags = implode(',', $f3->get('POST.tags'));
 			}
+			
+			if(!empty($f3->get('POST.share'))){
+				$share = 1;
+			}else{
+				$share = 0;
+			}
 
 			if ($id == 0) {
-				$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, status, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?)", array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), '', $current_user['user_id'], date("Y-m-d H:i:s"), $current_user['user_id'], date("Y-m-d H:i:s")));
+				$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, group_id, share, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?,?)", array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), $current_user['group_id'], $share, $current_user['user_id'], date("Y-m-d H:i:s"), $current_user['user_id'], date("Y-m-d H:i:s")));
 			} else {
-				$f3->get('DB')->exec("UPDATE link_list SET name=?, link=?, tags=?, list=?, user_upd=?, time_upd=? WHERE id=?", array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), $current_user['user_id'], date("Y-m-d H:i:s"), $id));
+				$f3->get('DB')->exec("UPDATE link_list SET name=?, link=?, tags=?, list=?, share=?, user_upd=?, time_upd=? WHERE id=?", array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), $share, $current_user['user_id'], date("Y-m-d H:i:s"), $id));
 			}
 		}
 
@@ -127,11 +133,6 @@ class privatepages extends authentication {
 
 	function settings($f3) {
 		$current_user = $f3->get('active_user');
-
-		$f3->set('password_change', $f3->get('GET.status'));
-
-		$result = $f3->get('DB')->exec("SELECT bearer FROM user WHERE user_id = ?", $current_user['user_id']);
-		$f3->set('bearer', $result[0]['bearer']);
 
 		$f3->set('content', 'private-settings.html');
 	}
@@ -166,6 +167,12 @@ class privatepages extends authentication {
 	}
 
 	function supersettings($f3) {
+		$current_user = $f3->get('active_user');
+		
+		if($current_user['superadmin'] != 1){
+			$f3->reroute("/");
+		}
+		
 		$result = $f3->get('DB')->exec("SELECT count(1) as rows FROM user_session WHERE token_expire>=?", date("Y-m-d H:i:s"));
 		$f3->set('active_session', $result[0]['rows']);
 
@@ -176,7 +183,12 @@ class privatepages extends authentication {
 	}
 
 	function supersettingsedit($f3) {
+		$current_user = $f3->get('active_user');
 		$task = $f3->get('POST.task');
+		
+		if($current_user['superadmin'] != 1){
+			$f3->reroute("/");
+		}
 
 		if ($task == 'delete') {
 			$user_id = $f3->get('POST.delete-id');
@@ -202,11 +214,11 @@ class privatepages extends authentication {
 					$f3->get('DB')->exec("UPDATE user SET password=? WHERE id=?", array($this->encriptDecript($f3, $f3->get('POST.user-password')), $user_id));
 				}
 				if ($f3->get('POST.user-superadmin') == '1') {
-					$f3->get('DB')->exec("UPDATE user SET group_id=?, superadmin=? WHERE id=?",
-						array($f3->get('POST.user-group'), 1, $user_id));
+					$f3->get('DB')->exec("UPDATE user SET superadmin=? WHERE id=?",
+						array(1, $user_id));
 				} else {
-					$f3->get('DB')->exec("UPDATE user SET group_id=?, superadmin=? WHERE id=?",
-						array($f3->get('POST.user-group'), 0, $user_id));
+					$f3->get('DB')->exec("UPDATE user SETsuperadmin=? WHERE id=?",
+						array(0, $user_id));
 				}
 			}
 		} elseif ($task == 'end-session') {

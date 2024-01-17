@@ -22,21 +22,22 @@ class controller {
         }
         
         $f3->set('DB', new DB\SQL('sqlite:'.$main_path.'/data/database.db'));
-
+		$db = $f3->get('DB');
+		
 		//create DB structure if file not exist
 		if ($install) {
-			$db = $f3->get('DB');
 			$db->exec("CREATE TABLE link_list (
-			    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-			    name     TEXT,
-			    link     TEXT,
-			    tags     TEXT,
-			    list     TEXT,
-			    status   TEXT,
-			    user_ins TEXT,
-			    time_ins TEXT,
-			    user_upd TEXT,
-			    time_upd TEXT
+			    id      	INTEGER PRIMARY KEY AUTOINCREMENT,
+			    name    	TEXT,
+			    link    	TEXT,
+			    tags    	TEXT,
+			    list    	TEXT,
+			    group_id	TEXT,
+			    share   	INTEGER,
+			    user_ins	TEXT,
+			    time_ins	TEXT,
+			    user_upd	TEXT,
+			    time_upd	TEXT
 			)");
 
 			$db->exec("CREATE TABLE user (
@@ -61,6 +62,25 @@ class controller {
 			}
 
 			$db->exec("INSERT INTO user (user_id, superadmin, bearer, password) VALUES(?,?,?,?)", array('superadmin', 1, $this->generateRandomString(50), $this->encriptDecript($f3, 'superadmin')));
+		
+			file_put_contents($main_path.'/data/db_version', '1.0.1', LOCK_EX);
+		}
+		
+
+		foreach (glob($main_path.'/setup/*') as $file) {
+			$file_name = basename($file, '.sql');
+			if(file_exists($main_path.'/data/db_version')){
+				$actual_version = file_get_contents($main_path.'/data/db_version');
+			}else{
+				$actual_version = '1.0.0';
+			}
+
+			if (version_compare($actual_version, $file_name, "<") && $file_name != 'install') {
+				$query = file_get_contents($file);
+				$query = explode(";", $query);
+				$db->exec($query);
+				file_put_contents($main_path.'/data/db_version', $file_name, LOCK_EX);
+			}
 		}
 
 		$f3->set('formatDate', function ($date, $empty = '', $time = false, $second = false) {

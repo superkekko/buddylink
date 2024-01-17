@@ -25,7 +25,7 @@ https://addons.mozilla.org/it/firefox/addon/buddylink/
 https://chromewebstore.google.com/detail/buddylink/heipdpcackofcbgicienckpjeopodaem
 
 ## To do
-- [ ] manage sharing tab between users of same group
+- [x] manage sharing tab between users of same group
 
 ## Modules
 - Fat-Free Framework 3.7 (https://fatfreeframework.com)

@@ -21,13 +21,17 @@
 							</repeat>
 						</select>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-5 mb-2">
 						<select name="list" placeholder="List" id="edit-list" class="form-control">
 							<option value=""></option>
 							<repeat group="{{@list}}" value="{{@item}}">
 								<option>{{@item}}</option>
 							</repeat>
 						</select>
+					</div>
+					<div class="col-md-1 mb-2 d-flex justify-content-between align-items-center form-check form-switch">
+						<input class="form-check-input" type="checkbox" name="share" id="edit-share" value="1">
+						<label class="form-check-label">Shared</label>
 					</div>
 				</div>
 				<input type="hidden" name="task" id="task" value="edit-link">
@@ -54,21 +58,26 @@
 						<div class="row ml-2 text-truncate">
 							<h6 class="mb-0"><img src="https://www.google.com/s2/favicons?domain={{@item['link']}}&sz=32" alt="{{@item['name']}} favicon"> <a href="{{@item['link']}}" target="_blank" class="link-yellow"><span class="name">{{@item['name']}}</span> (<span class="link">{{@item['link']}}</span>)</a></h6>
 							<div class="row mt-1 d-flex justify-content-between">
-								<div class="col">
+								<div class="col-md-4">
+									<check if="{{@item['share'] == 1}}">
+										<true>
+											<i class="fa-solid fa-people-group" id="shared"></i>
+										</true>
+									</check>
 									<a href="/list/{{@item['list']}}" class="list link-yellow">{{@item['list']}}</a>&emsp;
-										<span class="tags">
-											<repeat group="{{explode(',', @item['tags'])}}" value="{{@subitem}}">
-												<a href="/tag/{{@subitem}}"><span class="badge rounded-pill bg-custom">{{@subitem}}</span></a>
-											</repeat>
-										</span>
+									<span class="tags">
+										<repeat group="{{explode(',', @item['tags'])}}" value="{{@subitem}}">
+											<a href="/tag/{{@subitem}}"><span class="badge rounded-pill bg-custom">{{@subitem}}</span></a>
+										</repeat>
+									</span>
 								</div>
-								<div class="col  d-flex justify-content-end">
+								<div class="col-md-8 d-flex justify-content-end">
 									<button type="button" class="btn btn-sm btn-tool" data-bs-toggle="modal" data-bs-target="#edit-modal" id="edit-data" data-id="{{@item['id']}}" data-name="{{@item['name']}}" data-link="{{@item['link']}}" data-tags="{{@item['tags']}}" data-list="{{@item['list']}}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>&emsp;
 									<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
-									<input type="hidden" name="task" value="delete-link">
-									<input type="hidden" name="id" value="{{@item['id']}}">
-									<button type="submit" class="btn btn-sm btn-tool text-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
-								</form>
+										<input type="hidden" name="task" value="delete-link">
+										<input type="hidden" name="id" value="{{@item['id']}}">
+										<button type="submit" class="btn btn-sm btn-tool text-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -86,6 +95,11 @@
 		document.getElementById('edit-name').setAttribute("value", $(this).data('name'));
 		document.getElementById('edit-link').setAttribute("value", $(this).data('link'));
 		$('#edit-list').val($(this).data('list')).trigger('change');
+		if($(this).data('share') == 1){
+			document.getElementById('edit-share').setAttribute("checked", "checked");
+		}else{
+			document.getElementById('edit-share').removeAttribute("checked");
+		}
 		tags = $(this).data('tags');
 		$('#edit-tags').val(tags.split(",")).trigger('change');
 	});
@@ -95,8 +109,15 @@
 		document.getElementById('edit-name').setAttribute("value", "");
 		document.getElementById('edit-link').setAttribute("value", "");
 		$('#edit-list').val(null).trigger('change');
+		document.getElementById('edit-share').removeAttribute("checked");
 		$('#edit-tags').val(null).trigger('change');
 	});
+</script>
+
+<script>
+	tippy('#shared', {
+      content: "Task shared",
+    });
 </script>
 
 <script>
@@ -122,19 +143,4 @@
 	table.sort('time_ins', {
 		order: 'desc'
 	});
-</script>
-
-<script>
-	const timer = ms => new Promise(res => setTimeout(res, ms))
-
-	sync
-
-	function refresh() {
-		while (true) {
-			$('#link-list-wrapper').load(document.URL + ' #link-list');
-			await timer(60000);
-		}
-	}
-
-	refresh();
 </script>
