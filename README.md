@@ -4,7 +4,7 @@ Buddylink is a simple personal/shared Reading list/Bookmark manager self hosted
 ## Install and upgrade
 ### Requirements
 - apache 2.4 (or Nginx)
-- php 7.4
+- php 8.0
 
 ### Installation
 Copy the files in the folder and give access to public. Default user is superadmin/superadmin
@@ -28,7 +28,7 @@ https://chromewebstore.google.com/detail/buddylink/heipdpcackofcbgicienckpjeopod
 - [x] manage sharing tab between users of same group
 
 ## Modules
-- Fat-Free Framework 3.7 (https://fatfreeframework.com)
+- Fat-Free Framework 3.8.2 (https://fatfreeframework.com)
 - Font Awesome Free 6.3.0 (https://fontawesome.com)
 - Bootstrap 5.0.2 (https://getbootstrap.com/)
 - jQuery 3.6.0 (https://jquery.com/)
