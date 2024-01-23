@@ -65,7 +65,7 @@ class privatepages extends authentication {
 		$current_user = $f3->get('active_user');
 		$id = $f3->get('PARAMS.id');
 
-		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ? and list = ?", array($current_user['user_id'], $id));
+		$results = $f3->get('DB')->exec("SELECT * FROM link_list where (user_upd = ?  or (group_id = ? and share = ?)) and list = ?", array($current_user['user_id'], $id));
 		$f3->set('link_list', $results);
 
 		$f3->set('content', 'private-item.html');
@@ -94,7 +94,7 @@ class privatepages extends authentication {
 		$current_user = $f3->get('active_user');
 		$id = $f3->get('PARAMS.id');
 
-		$results = $f3->get('DB')->exec("SELECT * FROM link_list where user_upd = ? and (',' || tags || ',') LIKE ?", array($current_user['user_id'], '%,'.$id.',%'));
+		$results = $f3->get('DB')->exec("SELECT * FROM link_list where (user_upd = ?  or (group_id = ? and share = ?)) and (',' || tags || ',') LIKE ?", array($current_user['user_id'], '%,'.$id.',%'));
 		$f3->set('link_list', $results);
 
 		$f3->set('content', 'private-item.html');
