@@ -83,9 +83,6 @@ class authentication extends controller {
 	}
 
 	function checklogged($f3) {
-		$audit = \Audit::instance();
-		$f3->set('isdesktop', $audit->isdesktop());
-		
 		$session_username = $f3->get('SESSION.username');
 		$session_token = $f3->get('SESSION.token');
 

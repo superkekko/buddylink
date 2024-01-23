@@ -56,7 +56,7 @@
 				<repeat group="{{@link_list}}" value="{{@item}}">
 					<li data-id="{{ @item['id'] }}" class="shadow">
 						<div class="row ml-2 text-truncate">
-							<h6 class="mb-0"><img src="https://www.google.com/s2/favicons?domain={{@item['link']}}&sz=32" alt="{{@item['name']}} favicon"> <a href="{{@item['link']}}" target="_blank" class="link-yellow"><span class="name">{{@item['name']}}</span><check if="{{@isdesktop}}"><true> (<span class="link">{{@item['link']}}</span>)</true></check></a></h6>
+							<h6 class="mb-0"><img src="https://www.google.com/s2/favicons?domain={{@item['link']}}&sz=32" alt="{{@item['name']}} favicon"> <a href="{{@item['link']}}" target="_blank" class="link-yellow"><span class="name">{{@item['name']}}</span></a></h6>
 							<div class="row mt-1 d-flex justify-content-between">
 								<div class="col-md-4">
 									<check if="{{@item['share'] == 1}}">
