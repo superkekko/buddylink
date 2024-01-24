@@ -59,7 +59,7 @@ class api extends controller {
 						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ?", $postData['url']);
 						
 						if(empty($result[0])){
-							$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, status, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?)", array($url_title, $postData['url'], $postData['tags'], $postData['list'], '', $user[0]['user_id'], date("Y-m-d H:i:s"), $user[0]['user_id'], date("Y-m-d H:i:s")));
+							$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, group_id, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?)", array($url_title, $postData['url'], $postData['tags'], $postData['list'], $user[0]['group_id'], $user[0]['user_id'], date("Y-m-d H:i:s"), $user[0]['user_id'], date("Y-m-d H:i:s")));
 						}else{
 							$f3->get('DB')->exec("UPDATE link_list SET name=?, link=?, tags=?, list=?, user_upd=?, time_upd=? WHERE id=?", array($url_title, $postData['url'], $postData['tags'], $postData['list'], $user[0]['user_id'], date("Y-m-d H:i:s"), $result[0]['id']));
 						}
