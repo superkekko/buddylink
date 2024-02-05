@@ -18,7 +18,7 @@ class api extends controller {
 					$postData = json_decode(file_get_contents('php://input'), true);
 
 					if ($postData !== null) {
-						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ?", $postData['url']);
+						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? and group_id = ?", array($postData['url'], $user[0]['group_id']));
 						
 						$return_array=['data'=> array('list'=>$result[0]['list'],'tags'=>$result[0]['tags'])];
 						header('Content-Type: application/json');
@@ -56,7 +56,7 @@ class api extends controller {
 						$xpath = new DOMXPath($doc);
 						$url_title = $xpath->query('//title')->item(0)->nodeValue."\n";
 						
-						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ?", $postData['url']);
+						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? and group_id = ?", array($postData['url'], $user[0]['group_id']));
 						
 						if(empty($result[0])){
 							$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, group_id, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?)", array($url_title, $postData['url'], $postData['tags'], $postData['list'], $user[0]['group_id'], $user[0]['user_id'], date("Y-m-d H:i:s"), $user[0]['user_id'], date("Y-m-d H:i:s")));
