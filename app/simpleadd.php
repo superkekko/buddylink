@@ -50,8 +50,8 @@ class simpleadd extends authentication {
 			$tags = implode(',', $f3->get('POST.tags'));
 		}
 
-		$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, status, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?,?)",
-		array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), '', $current_user['user_id'], date("Y-m-d H:i:s"), $current_user['user_id'], date("Y-m-d H:i:s")));
+		$f3->get('DB')->exec("INSERT INTO link_list (name, link, tags, list, user_ins, time_ins, user_upd, time_upd) VALUES (?,?,?,?,?,?,?,?)",
+		array($f3->get('POST.name'), $f3->get('POST.link'), $tags, $f3->get('POST.list'), $current_user['user_id'], date("Y-m-d H:i:s"), $current_user['user_id'], date("Y-m-d H:i:s")));
 
 		echo Template::instance()->render('private-link-add-success.html');
 	}
