@@ -18,7 +18,7 @@ class api extends controller {
 					$postData = json_decode(file_get_contents('php://input'), true);
 
 					if ($postData !== null) {
-						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? and group_id = ?", array($postData['url'], $user[0]['group_id']));
+						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? or (group_id = ? and share = ?)", array($user[0]['user_id'], $user[0]['group_id'], 1));
 						
 						$return_array=['data'=> array('list'=>$result[0]['list'],'tags'=>$result[0]['tags'])];
 						header('Content-Type: application/json');
