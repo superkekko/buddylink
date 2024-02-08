@@ -2,24 +2,36 @@
 <html>
 
 <head>
-  <title>BuddyLink</title>
-  <link rel="stylesheet" type="text/css" href="popup.css">
-  <script src="popup.js"></script>
+	<title>BuddyLink</title>
+	<link rel="stylesheet" type="text/css" href="popup.css">
+	<link rel="stylesheet" href="select2.min.css">
+	<script src="jquery.min.js"></script>
+	<script src="select2.min.js"></script>
+	<script src="popup.js"></script>
 </head>
 
 <body>
-  <h2>Save the link in cloud</h2>
-  <form>
-	<label for="list">List name</label>
-    <input type="text" id="list" name="list">
-	
-    <label for="tags">Tags (comma separated)</label>
-    <input type="text" id="tags" name="tags">
-	<br>
-    <button type="button" id="sendRequest">Save</button>
-  </form>
-  <div id="loader" class="hidden"></div>
-  <div id="statusMessage" style="margin-top: 1em;"></div>
+	<h2>Save the link in cloud</h2>
+	<form>
+		<table>
+			<tr>
+				<td><select name="list" id="list" style="width: 100%">
+						<option value=""></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><select name="tags[]" multiple id="tags" style="width: 100%">
+						<option value=""></option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<button type="button" id="sendRequest">Save</button>
+	</form>
+	<div id="loader" class="hidden"></div>
+	<div id="statusMessage" style="margin-top: 1em;"></div>
 </body>
 
 </html>

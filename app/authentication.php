@@ -3,7 +3,7 @@ class authentication extends controller {
 
 	function loginpage($f3) {
 		//create new session with 15gg live cookie, rootpath, server, secure, httponly and samesite strict
-		session_set_cookie_params(1296000, '/', $_SERVER['HTTP_HOST'], false, true);
+		session_set_cookie_params(1296000, '/', $_SERVER['HTTP_HOST'], true, true);
 		ini_set('session.cookie_samesite', 'Lax');
 		$token = bin2hex(random_bytes(32));
 		if(empty($f3->get('SESSION.token'))){

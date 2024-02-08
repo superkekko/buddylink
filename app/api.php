@@ -15,16 +15,45 @@ class api extends controller {
 				$user = $f3->get('DB')->exec("SELECT * FROM user where bearer=?", $token);
 				
 				if(!empty($user[0])){
+					
+					$lists_raw = $f3->get('DB')->exec("SELECT distinct list FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($user[0]['user_id'], $user[0]['group_id'], 1));
+					$lists = [];
+					$i=0;
+					foreach ($lists_raw as $item) {
+						$lists['id_'.$i] = $item['list'];
+						$i++;
+					}
+					$lists = array_unique($lists);
+					asort($lists);
+			
+					$tags_raw = $f3->get('DB')->exec("SELECT distinct tags FROM link_list where user_upd = ? or (group_id = ? and share = ?)", array($user[0]['user_id'], $user[0]['group_id'], 1));
+					$tags = [];
+					$i=0;
+					foreach ($tags_raw as $item) {
+						foreach (explode(',', $item['tags']) as $subitem) {
+							$tags['id_'.$i] = $subitem;
+							$i++;
+						}
+					}
+					$tags = array_unique($tags);
+					asort($tags);
+		
 					$postData = json_decode(file_get_contents('php://input'), true);
 
 					if ($postData !== null) {
-						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? or (group_id = ? and share = ?)", array($user[0]['user_id'], $user[0]['group_id'], 1));
+						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? and (user_upd = ? or (group_id = ? and share = ?))", array($postData['url'], $user[0]['user_id'], $user[0]['group_id'], 1));
 						
-						$return_array=['data'=> array('list'=>$result[0]['list'],'tags'=>$result[0]['tags'])];
-						header('Content-Type: application/json');
-						echo json_encode($return_array);
+						if(!empty($result)){
+							$return_array=['data'=> array('list'=>$result[0]['list'],'tags'=>$result[0]['tags'], 'alllist'=>$lists, 'alltags'=> $tags)];
+							header('Content-Type: application/json');
+							echo json_encode($return_array);
+						}else{
+							$return_array=['data'=> array('list'=>'','tags'=>'', 'alllist'=>$lists, 'alltags'=> $tags)];
+							header('Content-Type: application/json');
+							echo json_encode($return_array);
+						}
 					} else {
-						$return_array=['data'=> array('list'=>'','tags'=>'')];
+						$return_array=['data'=> array('list'=>'','tags'=>'', 'alllist'=>$lists, 'alltags'=> $tags)];
 						header('Content-Type: application/json');
 						echo json_encode($return_array);
 					}
