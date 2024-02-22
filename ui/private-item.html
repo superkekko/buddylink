@@ -75,7 +75,7 @@
 									</span>
 								</div>
 								<div class="col-md-8 d-flex justify-content-end">
-									<button type="button" class="btn btn-sm btn-tool" data-bs-toggle="modal" data-bs-target="#edit-modal" id="edit-data" data-id="{{@item['id']}}" data-name="{{@item['name']}}" data-link="{{@item['link']}}" data-tags="{{@item['tags']}}" data-list="{{@item['list']}}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>&emsp;
+									<button type="button" class="btn btn-sm btn-tool" id="edit-data" data-id="{{@item['id']}}" data-name="{{@item['name']}}" data-link="{{@item['link']}}" data-tags="{{@item['tags']}}" data-list="{{@item['list']}}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>&emsp;
 									<form action="{{ @URI }}" method="post" enctype="application/x-www-form-urlencoded">
 										<input type="hidden" name="task" value="delete-link">
 										<input type="hidden" name="id" value="{{@item['id']}}">
@@ -161,8 +161,5 @@
 <script>
 	var table = new List('list', {
 		valueNames: ['name', 'link', 'list', 'tags']
-	});
-	table.sort('time_ins', {
-		order: 'desc'
 	});
 </script>
