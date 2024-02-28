@@ -83,7 +83,11 @@ class api extends controller {
 						$doc = new DOMDocument();
 						@$doc->loadHTMLFile($postData['url']);
 						$xpath = new DOMXPath($doc);
-						$url_title = $xpath->query('//title')->item(0)->nodeValue."\n";
+						if($xpath->query('//title')->length == 0){
+							$url_title = $postData['url'];
+						}else{
+							$url_title = $xpath->query('//title')->item(0)->nodeValue."\n";
+						}
 						
 						$result = $f3->get('DB')->exec("SELECT * FROM link_list WHERE link = ? and group_id = ?", array($postData['url'], $user[0]['group_id']));
 						
