@@ -7,6 +7,11 @@ class controller {
 
 		$main_path = dirname(__DIR__);
 		$f3->set('main_path', $main_path);
+		
+		$site = $f3->get('site');
+		if(!empty($site['port'])){
+			$f3->set('PORT', $site['port']);
+		}
 
 		$f3->set('LOCALES', $main_path.'/dict/');
 		$f3->set('FALLBACK', 'en');
