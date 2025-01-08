@@ -1,7 +1,5 @@
 <?php
 class controller {
-
-	//instantiate class
 	function __construct() {
 		$f3 = Base::instance();
 
@@ -12,11 +10,12 @@ class controller {
 		if (!empty($site['port'])) {
 			$f3->set('PORT', $site['port']);
 		}
+		
+		$site_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];
+		$f3->set('site_url', $site_url);
 
 		$f3->set('LOCALES', $main_path.'/dict/');
 		$f3->set('FALLBACK', 'en');
-
-		$f3->set('siteurl', $this->siteURL($f3));
 
 		//check if DB is empty and create structure
 		//check previus DB presence

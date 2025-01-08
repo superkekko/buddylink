@@ -1,9 +1,6 @@
 <?php
 class authentication extends controller {
 	function loginpage($f3) {
-		$site_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];
-		$f3->set('site_url', $site_url);
-		
 		//create new session with 15gg live cookie, rootpath, server, secure, httponly and samesite strict
 		session_set_cookie_params(1296000, '/', $_SERVER['SERVER_NAME'], true, true);
 		ini_set('session.cookie_samesite', 'Lax');
@@ -61,7 +58,7 @@ class authentication extends controller {
 				if ($url_parsed['path'] == '/login' || $url_parsed['path'] == '/logout') {
 					$f3->reroute('/');
 				} else {
-					$f3->reroute($requestpage);
+					$f3->reroute('.'.$url_parsed['path']);
 				}
 			} else {
 				$f3->reroute('/');
