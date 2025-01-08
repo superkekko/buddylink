@@ -105,27 +105,8 @@ class controller {
 	//custom error page
 	function error($f3) {
 		$log = new Log('error.log');
-		$log->write($f3->get('ERROR.code').' - '.$f3->get('ERROR.text'));
+		$log->write($error_code.' - '.$f3->get('ERROR.code').' - '.$f3->get('ERROR.text').' - '.$f3->get('ERROR.trace'));
 		echo Template::instance()->render('service.html');
-	}
-
-	function siteURL($f3) {
-		$site = $f3->get('site');
-		
-		if (!empty($site['port'])) {
-			return sprintf(
-				"%s://%s:%s",
-				isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-				$_SERVER['SERVER_NAME'],
-				$site['port']
-			);
-		} else {
-			return sprintf(
-				"%s://%s",
-				isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-				$_SERVER['SERVER_NAME']
-			);
-		}
 	}
 
 	function encriptDecript($f3, $string, $action = 'e') {

@@ -59,7 +59,21 @@
 				<check if="{{ isset(@login_error) }}">
 					<true>
 						<div class="alert alert-danger">
-							<i class="icon fas fa-ban"></i> Error during login
+							<i class="icon fas fa-ban"></i> Error during login, refresh the page
+						</div>
+					</true>
+				</check>
+				<check if="{{ isset(@token_error) }}">
+					<true>
+						<div class="alert alert-danger">
+							<i class="icon fas fa-ban"></i> The token need to be regenerated, refresh the page
+						</div>
+					</true>
+				</check>
+				<check if="{{ isset(@user_error) }}">
+					<true>
+						<div class="alert alert-danger">
+							<i class="icon fas fa-ban"></i> The user does not exist
 						</div>
 					</true>
 				</check>

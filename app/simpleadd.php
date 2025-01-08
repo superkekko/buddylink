@@ -29,7 +29,6 @@ class simpleadd extends authentication {
 	}
 
 	function afterroute($f3) {
-		$f3->set('site_url', $this->siteURL($f3));
 	}
 	
 	function linkadd($f3) {
