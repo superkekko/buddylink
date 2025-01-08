@@ -7,28 +7,28 @@ class controller {
 
 		$main_path = dirname(__DIR__);
 		$f3->set('main_path', $main_path);
-		
+
 		$site = $f3->get('site');
-		if(!empty($site['port'])){
+		if (!empty($site['port'])) {
 			$f3->set('PORT', $site['port']);
 		}
 
 		$f3->set('LOCALES', $main_path.'/dict/');
 		$f3->set('FALLBACK', 'en');
 
-		$f3->set('siteurl', $this->siteURL());
+		$f3->set('siteurl', $this->siteURL($f3));
 
 		//check if DB is empty and create structure
 		//check previus DB presence
 		if (!file_exists($main_path.'/data/database.db')) {
-            $install = true;
-        } else {
-            $install = false;
-        }
-        
-        $f3->set('DB', new DB\SQL('sqlite:'.$main_path.'/data/database.db'));
+			$install = true;
+		} else {
+			$install = false;
+		}
+
+		$f3->set('DB', new DB\SQL('sqlite:'.$main_path.'/data/database.db'));
 		$db = $f3->get('DB');
-		
+
 		//create DB structure if file not exist
 		if ($install) {
 			$db->exec("CREATE TABLE link_list (
@@ -62,21 +62,22 @@ class controller {
 			)");
 
 			if (!file_exists($main_path.'/data/secret.json')) {
-				$secret = ['key' => $this->generateRandomString(250), 'iv' => $this->generateRandomString(250)];
+				$secret = ['key' => $this->generateRandomString(250),
+					'iv' => $this->generateRandomString(250)];
 				file_put_contents($main_path.'/data/secret.json', json_encode($secret, JSON_INVALID_UTF8_IGNORE));
 			}
 
 			$db->exec("INSERT INTO user (user_id, group_id, superadmin, bearer, password) VALUES(?,?,?,?,?)", array('superadmin', 'superadmin', 1, $this->generateRandomString(50), $this->encriptDecript($f3, 'superadmin')));
-		
+
 			file_put_contents($main_path.'/data/db_version', '1.0.1', LOCK_EX);
 		}
-		
+
 
 		foreach (glob($main_path.'/setup/*') as $file) {
 			$file_name = basename($file, '.sql');
-			if(file_exists($main_path.'/data/db_version')){
+			if (file_exists($main_path.'/data/db_version')) {
 				$actual_version = file_get_contents($main_path.'/data/db_version');
-			}else{
+			} else {
 				$actual_version = '1.0.0';
 			}
 
@@ -108,12 +109,23 @@ class controller {
 		echo Template::instance()->render('service.html');
 	}
 
-	function siteURL() {
-		return sprintf(
-			"%s://%s",
-			isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-			$_SERVER['SERVER_NAME']
-		);
+	function siteURL($f3) {
+		$site = $f3->get('site');
+		
+		if (!empty($site['port'])) {
+			return sprintf(
+				"%s://%s:%s",
+				isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+				$_SERVER['SERVER_NAME'],
+				$site['port']
+			);
+		} else {
+			return sprintf(
+				"%s://%s",
+				isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+				$_SERVER['SERVER_NAME']
+			);
+		}
 	}
 
 	function encriptDecript($f3, $string, $action = 'e') {
